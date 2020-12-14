@@ -1,9 +1,21 @@
 {
+    :input-sources {
+        :us {:input_source_id "com.apple.keylayout.ABC"
+             :language        "en"}
+        :sp {:input_mode_id   "com.apple.inputmethod.SCIM.Shuangpin"
+             :input_source_id "com.apple.inputmethod.SCIM.Shuangpin"
+             :language        "zh-Hans"}
+    }
     :main [
         {:des "Change shift to preivous input source if pressed alone"
          :rules [
              [:left_shift {:key :left_shift :lazy true} nil {:held :left_shift :alone :!Tspacebar}]
              [:right_shift {:key :right_shift :lazy true} nil {:held :right_shift :alone :!Tspacebar}]
          ]}
-    ]
+        {:des "Double tap escape to switch english input source"
+            :rules [
+                [:##escape :us ["escape pressed" 1]]
+                [:##escape [:escape ["escape pressed" 1]] nil {:delayed {:invoked ["escape pressed" 0] :canceled ["escape pressed" 0]}}]
+            ]}
+       ]
 }
