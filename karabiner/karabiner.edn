@@ -1,0 +1,9 @@
+{
+    :main [
+        {:des "Change shift to preivous input source if pressed alone"
+         :rules [
+             [:left_shift {:key :left_shift :lazy true} nil {:held :left_shift :alone :!Tspacebar}]
+             [:right_shift {:key :right_shift :lazy true} nil {:held :right_shift :alone :!Tspacebar}]
+         ]}
+    ]
+}
