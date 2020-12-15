@@ -13,30 +13,40 @@
     :main [
         {:des "Change shift to preivous input source if pressed alone"
          :rules [
-             [:left_shift {:key :left_shift :lazy true} nil {:held :left_shift :alone :!Tspacebar}]
-             [:right_shift {:key :right_shift :lazy true} nil {:held :right_shift :alone :!Tspacebar}]
-         ]}
+            [:left_shift {:key :left_shift :lazy true} nil {:held :left_shift :alone :!Tspacebar}]
+            [:right_shift {:key :right_shift :lazy true} nil {:held :right_shift :alone :!Tspacebar}]
+        ]}
         {:des "Double tap escape to switch english input source"
-            :rules [
-                [:##escape :us ["escape pressed" 1]]
-                [:##escape [:escape ["escape pressed" 1]] nil {:delayed {:invoked ["escape pressed" 0] :canceled ["escape pressed" 0]}}]
-            ]}
+         :rules [
+            [:##escape :us ["escape pressed" 1]]
+            [:##escape [:escape ["escape pressed" 1]] nil {:delayed {:invoked ["escape pressed" 0] :canceled ["escape pressed" 0]}}]
+        ]}
         {:des "Change caps_lock to left_control"
          :rules [
-             [:caps_lock :left_control :macbook-internal]
-         ]}
+            [:caps_lock :left_control :macbook-internal]
+        ]}
         {:des "Change hold spacebar to hyper (command + control + option)"
          :rules [
-             [:##spacebar {:key :!TOleft_command :lazy true } :macbook-internal {:alone :spacebar}]
-         ]}
+            [:##spacebar {:key :!TOleft_command :lazy true } :macbook-internal {:alone :spacebar}]
+        ]}
         {:des "Vi Extend (Trigger: Tab)"
          :rules [
-             [:tab ["vi-ext" 1] nil {:afterup ["vi-ext" 0] :alone :tab}]
-             [:condi ["vi-ext" 1]]
-             [:##h :left_arrow]
-             [:##j :down_arrow]
-             [:##k :up_arrow]
-             [:##l :right_arrow]
-         ]}
-       ]
+            [:tab ["vi-ext" 1] nil {:afterup ["vi-ext" 0] :alone :tab}]
+            [:condi ["vi-ext" 1]]
+            [:##h :left_arrow]
+            [:##j :down_arrow]
+            [:##k :up_arrow]
+            [:##l :right_arrow]
+            [:##q :!CTq]
+            [:##s :!COpower]
+            [:##d :!Cdelete_or_backspace]
+            [:##v :!COSv]
+            [:##m :mute]
+            [:##semicolon :mission_control]
+            [:##quote :launchpad]
+            [:comma :!Tleft_arrow]
+            [:period :!Tright_arrow]
+            [:slash :!Ff11]
+        ]}
+    ]
 }
