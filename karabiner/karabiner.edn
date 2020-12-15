@@ -29,5 +29,13 @@
          :rules [
              [:##spacebar {:key :!TOleft_command :lazy true } :macbook-internal {:alone :spacebar}]
          ]}
+        {:des "Vi Extend (Trigger: Tab)"
+         :rules [
+             [:tab ["vi-ext" 1] nil {:afterup ["vi-ext" 0] :alone :tab}]
+             [:##h :left_arrow]
+             [:##j :down_arrow]
+             [:##k :up_arrow]
+             [:##l :right_arrow]
+         ]}
        ]
 }
