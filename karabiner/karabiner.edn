@@ -32,6 +32,7 @@
         {:des "Vi Extend (Trigger: Tab)"
          :rules [
              [:tab ["vi-ext" 1] nil {:afterup ["vi-ext" 0] :alone :tab}]
+             [:condi ["vi-ext" 1]]
              [:##h :left_arrow]
              [:##j :down_arrow]
              [:##k :up_arrow]
