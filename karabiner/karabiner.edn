@@ -1,4 +1,8 @@
 {
+    :devices {
+        :macbook-internal [{:product_id 630 :vendor_id 1452}]
+        :hhkb-tmk         [{:product_id 6592 :vendor_id 65261}]
+    }
     :input-sources {
         :us {:input_source_id "com.apple.keylayout.ABC"
              :language        "en"}
@@ -17,5 +21,9 @@
                 [:##escape :us ["escape pressed" 1]]
                 [:##escape [:escape ["escape pressed" 1]] nil {:delayed {:invoked ["escape pressed" 0] :canceled ["escape pressed" 0]}}]
             ]}
+        {:des "Change caps_lock to left_control"
+         :rules [
+             [:caps_lock :left_control :macbook-internal]
+         ]}
        ]
 }
