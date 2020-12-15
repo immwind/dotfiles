@@ -25,5 +25,9 @@
          :rules [
              [:caps_lock :left_control :macbook-internal]
          ]}
+        {:des "Change hold spacebar to hyper (command + control + option)"
+         :rules [
+             [:##spacebar {:key :!TOleft_command :lazy true } :macbook-internal {:alone :spacebar}]
+         ]}
        ]
 }
