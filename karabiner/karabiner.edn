@@ -14,12 +14,7 @@
         {:des "Change shift to preivous input source if pressed alone"
          :rules [
             [:left_shift {:key :left_shift :lazy true} nil {:held :left_shift :alone :!Tspacebar}]
-            [:right_shift {:key :right_shift :lazy true} nil {:held :right_shift :alone :!Tspacebar}]
-        ]}
-        {:des "Double tap escape to switch english input source"
-         :rules [
-            [:##escape :us ["escape pressed" 1]]
-            [:##escape [:escape ["escape pressed" 1]] nil {:delayed {:invoked ["escape pressed" 0] :canceled ["escape pressed" 0]}}]
+            ; [:right_shift {:key :right_shift :lazy true} nil {:held :right_shift :alone :!Tspacebar}]
         ]}
         {:des "Change caps_lock to left_control"
          :rules [
@@ -47,6 +42,11 @@
             [:comma :!Tleft_arrow]
             [:period :!Tright_arrow]
             [:slash :!Ff11]
+        ]}
+        {:des "Double tap escape to switch english input source"
+         :rules [
+            [:##escape :us ["escape pressed" 1]]
+            [:##escape [:escape ["escape pressed" 1]] nil {:delayed {:invoked ["escape pressed" 0] :canceled ["escape pressed" 0]}}]
         ]}
     ]
 }
