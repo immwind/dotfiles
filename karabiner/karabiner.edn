@@ -45,6 +45,7 @@
             [:comma :!Tleft_arrow]
             [:period :!Tright_arrow]
             [:slash :!Ff11]
+            [:p :f17]
         ]}
         {:des "Typora Vi mode"
          :rules [:typora
