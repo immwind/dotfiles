@@ -7,8 +7,12 @@ hypers = {'cmd', 'alt', 'ctrl', 'shift'}
 -- -------------------------------------------------------------------------- --
 -- 载入模块
 
+require "wifi"
 require "window"
 require "keyStrokes"
+require "switchMonitor"
+require "inputMethodPrompt"
+require "launchApp"
 
 -- -------------------------------------------------------------------------- --
 -- 自动重载配置
