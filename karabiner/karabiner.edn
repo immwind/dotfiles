@@ -61,9 +61,9 @@
             [:0 :!Cleft_arrow ["viora" 1]]
             [:!S4 :!Cright_arrow ["viora" 1]]
             [:g ["viora_g" 1] [["viora" 1] ["viora_g" 0]]]
-            [:g [:!Cup_arrow ["viora_g" 0]]]
+            [:g [:!Cup_arrow ["viora_g" 0]] ["viora_g" 1]]
             [:z ["viora_z" 1] [["viora" 1] ["viora_z" 0]]]
-            [:z [:!Tl ["viora_z" 0]]]
+            [:z [:!Tl ["viora_z" 0]] ["viora_z" 1]]
             [:!Sg :!Cdown_arrow ["viora" 1]]
          ]}
         {:des "Double tap escape to switch english input source"
