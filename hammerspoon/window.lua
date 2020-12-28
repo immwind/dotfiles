@@ -54,37 +54,37 @@ end
 -- 移动窗口
 
 -- 左 1/2 和 3/5
-hs.hotkey.bind(hyper, "H", function()
+hs.hotkey.bind(hyper, "h", function()
     moveWindow(gridCell(0,0,5,4), gridCell(0,0,3,4))
 end)
 
 -- 左上 1/4 和 左下 1/4
-hs.hotkey.bind(hyper, "J", function()
+hs.hotkey.bind(hyper, "j", function()
     moveWindow(gridCell(0,0,5,2), gridCell(0,2,5,2))
 end)
 
 -- 右 1/2 和 3/5
-hs.hotkey.bind(hyper, "L", function()
+hs.hotkey.bind(hyper, "l", function()
     moveWindow(gridCell(5,0,5,4), gridCell(7,0,3,4))
 end)
 
 -- 右上 1/4 和 右下 1/4
-hs.hotkey.bind(hyper, "K", function()
+hs.hotkey.bind(hyper, "k", function()
     moveWindow(gridCell(5,0,5,2), gridCell(5,2,5,2))
 end)
 
 -- 左上 1/6 和 左下 1/6
-hs.hotkey.bind(hypers, "J", function()
+hs.hotkey.bind(hypers, "j", function()
     moveWindow(gridCell(0,0,3,2), gridCell(0,2,3,2))
 end)
 
 -- 右上 1/6 和 右下 1/6
-hs.hotkey.bind(hypers, "K", function()
+hs.hotkey.bind(hypers, "k", function()
     moveWindow(gridCell(7,0,3,2), gridCell(7,2,3,2))
 end)
 
 -- 居中
-hs.hotkey.bind(hyper, "C", function()
+hs.hotkey.bind(hyper, "c", function()
     moveWindow(gridCell(3,1,4,2), gridCell(3,0,4,4))
 end)
 
@@ -94,6 +94,6 @@ hs.hotkey.bind(hyper, "z", function()
 end)
 
 -- 全屏
-hs.hotkey.bind(hyper, "F", function()
+hs.hotkey.bind(hyper, "f", function()
     windowMeta.new().window:toggleFullScreen()
 end)
