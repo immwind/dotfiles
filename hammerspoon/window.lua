@@ -88,6 +88,11 @@ hs.hotkey.bind(hyper, "C", function()
     moveWindow(gridCell(3,1,4,2), gridCell(3,0,4,4))
 end)
 
+-- 最大化
+hs.hotkey.bind(hyper, "z", function()
+    hs.grid.maximizeWindow()
+end)
+
 -- 全屏
 hs.hotkey.bind(hyper, "F", function()
     windowMeta.new().window:toggleFullScreen()
