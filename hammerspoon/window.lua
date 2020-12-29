@@ -58,9 +58,9 @@ hs.hotkey.bind(hyper, "h", function()
     moveWindow(gridCell(0,0,5,4), gridCell(0,0,3,4))
 end)
 
--- 左上 1/4 和 左下 1/4
+-- 左下 1/4 和 左上 1/4
 hs.hotkey.bind(hyper, "j", function()
-    moveWindow(gridCell(0,0,5,2), gridCell(0,2,5,2))
+    moveWindow(gridCell(0,2,5,2), gridCell(0,0,5,2))
 end)
 
 -- 右 1/2 和 3/5
@@ -68,19 +68,19 @@ hs.hotkey.bind(hyper, "l", function()
     moveWindow(gridCell(5,0,5,4), gridCell(7,0,3,4))
 end)
 
--- 右上 1/4 和 右下 1/4
+-- 右下 1/4 和 右上 1/4
 hs.hotkey.bind(hyper, "k", function()
-    moveWindow(gridCell(5,0,5,2), gridCell(5,2,5,2))
+    moveWindow(gridCell(5,2,5,2), gridCell(5,0,5,2))
 end)
 
--- 左上 1/6 和 左下 1/6
+-- 左下 1/6 和 左上 1/6
 hs.hotkey.bind(hypers, "j", function()
-    moveWindow(gridCell(0,0,3,2), gridCell(0,2,3,2))
+    moveWindow(gridCell(0,2,3,2), gridCell(0,0,3,2))
 end)
 
--- 右上 1/6 和 右下 1/6
+-- 右下 1/6 和 右上 1/6
 hs.hotkey.bind(hypers, "k", function()
-    moveWindow(gridCell(7,0,3,2), gridCell(7,2,3,2))
+    moveWindow(gridCell(7,2,3,2), gridCell(7,0,3,2))
 end)
 
 -- 居中
