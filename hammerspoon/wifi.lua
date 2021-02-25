@@ -40,6 +40,7 @@ wifiWatcher = hs.wifi.watcher.new(function()
 
     if currWiFi == workWiFi then
         launchApp()
+        hs.audiodevice.defaultOutputDevice():setMuted(true) -- 静音
     elseif currWiFi == homeWiFi then
         killApp()
     end
