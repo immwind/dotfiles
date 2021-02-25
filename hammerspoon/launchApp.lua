@@ -29,5 +29,8 @@ for key, app in pairs(applist) do
 
     hs.hotkey.bind("option", key, function()
         hs.application.launchOrFocus(app)
+        if app == "Finder" then
+            hs.application("访达"):activate()
+        end
     end)
 end
