@@ -1,5 +1,5 @@
 -- -------------------------------------------------------------------------- --
--- 在切换输入法时进行提示
+-- 在输入法改变时进行提示
 
 hs.keycodes.inputSourceChanged(function()
 
@@ -12,12 +12,13 @@ hs.keycodes.inputSourceChanged(function()
 
     -- 提示当前输入法
     if (currentSourceID == "com.apple.keylayout.ABC") then
-        showUUID = hs.alert.show("ABC", 0.8)
+        sourcePrompt = "ABC"
     elseif (currentSourceID == "com.apple.inputmethod.SCIM.Shuangpin") then
-        showUUID = hs.alert.show("双拼", 0.8)
+        sourcePrompt = "双拼"
     elseif (currentSourceID == "com.apple.inputmethod.SCIM.ITABC") then
-        showUUID = hs.alert.show("拼音", 0.8)
+        sourcePrompt = "拼音"
     end
 
     lastSourceID = currentSourceID
+    hs.alert.show(sourcePrompt, 0.8)
 end)
