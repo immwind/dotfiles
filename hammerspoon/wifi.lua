@@ -36,7 +36,11 @@ end
 
 -- 根据当前网络连接 Wi-F 进行操作
 wifiWatcher = hs.wifi.watcher.new(function()
-    local currWiFi = string.sub(hs.wifi.currentNetwork(), -2)
+
+    -- 避免断开网络时 Console 报错
+    if hs.wifi.currentNetwork() then
+        currWiFi = string.sub(hs.wifi.currentNetwork(), -2)
+    end
 
     if currWiFi == workWiFi then
         launchApp()
@@ -44,6 +48,5 @@ wifiWatcher = hs.wifi.watcher.new(function()
     elseif currWiFi == homeWiFi then
         killApp()
     end
-end)
 
-wifiWatcher:start()
+end):start()
