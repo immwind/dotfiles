@@ -97,3 +97,16 @@ end)
 hs.hotkey.bind(hyper, "f", function()
     windowMeta.new().window:toggleFullScreen()
 end)
+
+-- 移动窗口到另一屏幕
+hs.hotkey.bind(hyper, "s", function()
+
+    local focusedWin = hs.window.focusedWindow()
+    local nextScreen = hs.screen.mainScreen():next()
+
+    if focusedWin:isFullScreen() then
+        focusedWin:toggleFullScreen()
+    end
+
+    hs.layout.apply({{nil, focusedWin, nextScreen,hs.layout.maximized, nil, nil}})
+end)
