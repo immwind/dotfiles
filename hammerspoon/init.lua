@@ -13,6 +13,7 @@ require "keyStrokes"
 require "switchMonitor"
 require "inputMethodPrompt"
 require "launchApp"
+require "sleep"
 
 -- -------------------------------------------------------------------------- --
 -- 自动重载配置
