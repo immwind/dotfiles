@@ -19,8 +19,10 @@ local applist = {
     -- Y、U、I、O、P
     y = "WorkFlowy",
     i = "iTerm",
+    o = "Obsidian",
     -- H、J、K、L
     -- N、M
+    n = "Notion",
     m = "MWeb",
 }
 

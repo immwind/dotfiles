@@ -45,6 +45,8 @@ function mkcd {
     mkdir $* && cd ${@[$#]}
 }
 
+eval "$(starship init zsh)"
+
 # pipenv 自动完成
 eval "$(pipenv --completion)"
 # pipenv env 目录位置
