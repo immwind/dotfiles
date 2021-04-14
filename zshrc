@@ -11,6 +11,9 @@ export PATH="$PATH:$GOPATH/bin"
 alias note="code ~/Documents/Note.code-workspace"
 alias coda="code ~/Documents/Coda.code-workspace"
 
+# brew install trash
+alias rm="trash -vF"            # 删除文件（Finder）
+
 # 配置
 ZSH_THEME="agnoster"            # 主题
 DEFAULT_USER=$USER              # 隐藏主机名
@@ -23,7 +26,6 @@ plugins=(
   git
   zsh-autosuggestions           # 命令补全
   z                             # 目录跳转
-  pipenv
   sudo                          # 命令前加 sudo
   #vi-mode                       # 命令行 vi 模式
 )
@@ -45,18 +47,5 @@ function mkcd {
     mkdir $* && cd ${@[$#]}
 }
 
-eval "$(starship init zsh)"
-
-# pipenv 自动完成
-eval "$(pipenv --completion)"
-# pipenv env 目录位置
-export PIPENV_VENV_IN_PROJECT=1
-
-# pyenv
-# 避免 pyenv 安装报错
-export LDFLAGS="-L/usr/local/opt/zlib/lib"
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
-fi
+# brew install starship
+eval "$(starship init zsh)"     # 自定义 Shell 提示符，需放在末尾
