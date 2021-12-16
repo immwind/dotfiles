@@ -3,6 +3,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+
 # 变量
 export ZSH=~/.oh-my-zsh
 
@@ -37,22 +38,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
-
-# 脚本
-
-# 重复执行指定命令
-function watch {
-    while; do
-        $@
-        sleep 3
-    done
-}
-
-# 创建文件夹并跳转到目录（如果同时创建多个，则跳转到最后一个）
-function mkcd {
-    mkdir $* && cd ${@[$#]}
-}
-
+source ~/dotfiles/scripts.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
