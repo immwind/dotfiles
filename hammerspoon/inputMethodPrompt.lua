@@ -9,16 +9,19 @@ hs.keycodes.inputSourceChanged(function()
     if currentSourceID == lastSourceID then
         return
     end
+    hs.alert.closeSpecific(sourcePrompt)
 
-    -- 提示当前输入法
     if (currentSourceID == "com.apple.keylayout.ABC") then
-        sourcePrompt = "ABC"
+        message = "ABC"
+    elseif (currentSourceID == "im.rime.inputmethod.Squirrel.Rime") then
+        message = "鼠须管"
     elseif (currentSourceID == "com.apple.inputmethod.SCIM.Shuangpin") then
-        sourcePrompt = "双拼"
+        message = "双拼"
     elseif (currentSourceID == "com.apple.inputmethod.SCIM.ITABC") then
-        sourcePrompt = "拼音"
+        message = "拼音"
     end
 
+    sourcePrompt = hs.alert.show(message, 0.8)
     lastSourceID = currentSourceID
-    hs.alert.show(sourcePrompt, 0.8)
+
 end)
