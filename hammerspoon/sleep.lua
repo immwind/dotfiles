@@ -7,13 +7,13 @@ local blueutil = "'/usr/local/bin/blueutil'"
 local sleepWatcher = require("hs.caffeinate.watcher")
 
 cw = sleepWatcher.new(function(screenEvent)
-        if screenEvent == sleepWatcher.screensDidSleep then
-            if hs.battery.powerSource() == "Battery Power" then
-                hs.wifi.setPower(false)
-                hs.execute(blueutil.." --power 0")
-            end
-        elseif screenEvent == sleepWatcher.screensDidWake then
-            hs.wifi.setPower(true)
-            hs.execute(blueutil.." --power 1")
+    if screenEvent == sleepWatcher.systemWillSleep then
+        if hs.battery.powerSource() == "Battery Power" then
+            hs.execute(blueutil.." --power 0")
+            hs.wifi.setPower(false)
         end
+    elseif screenEvent == sleepWatcher.screensDidWake then
+        hs.execute(blueutil.." --power 1")
+        hs.timer.doAfter(2, function() hs.wifi.setPower(true) end)
+    end
 end):start()
