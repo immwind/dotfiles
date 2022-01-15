@@ -1,0 +1,5 @@
+patch:
+  schema_list:
+    - schema: double_pinyin_abc
+
+  menu/page_size: 7                  # 候选词个数
