@@ -1,0 +1,28 @@
+patch:
+  schema/name: ABC 双拼
+  switches:
+    - name: ascii_mode
+      reset: 0
+      states: [ 中文, 西文 ]
+    - name: full_shape
+      states: [ 半角, 全角 ]
+    - name: simplification
+      states: [ 漢字, 汉字 ]
+    - name: emoji_suggestion
+      reset: 1
+      states: [ "🈚️️\uFE0E", "🈶️️\uFE0F" ]
+  engine/filters:
+    - simplifier@emoji_suggestion
+    - simplifier
+    - uniquifier
+  emoji_suggestion:
+    opencc_config: emoji.json
+    option_name: emoji_suggestion
+    # tips: all
+
+  # 自定义符号
+  punctuator:
+    import_preset: symbols.custom
+    symbols:
+      "/xx": [★, ☆]
+  recognizer/patterns/punct: "^/([0-9]0?|[A-Za-z]+)$"
