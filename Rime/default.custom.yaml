@@ -1,5 +1,10 @@
 patch:
   schema_list:
     - schema: double_pinyin_abc
+    - schema: luna_pinyin_simp      # 朙月拼音
 
-  menu/page_size: 7                  # 候选词个数
+  menu/page_size: 7                 # 候选词个数
+
+  key_binder/bindings:              # [] 翻页
+    - { when: paging, accept: bracketleft, send: Page_Up }
+    - { when: has_menu, accept: bracketright, send: Page_Down }
