@@ -10,18 +10,11 @@
              :input_source_id "com.apple.inputmethod.SCIM.Shuangpin"
              :language        "zh-Hans"}
     }
-   :applications {
-        :typora ["abnerworks.Typora"]
-    }
     :main [
         {:des "Change shift to preivous input source if pressed alone"
          :rules [
             [:left_shift {:key :left_shift :lazy true} nil {:held :left_shift :alone :!Tspacebar}]
             ; [:right_shift {:key :right_shift :lazy true} nil {:held :right_shift :alone :!Tspacebar}]
-        ]}
-        {:des "Change caps_lock to left_control"
-         :rules [
-            [:caps_lock :left_control :macbook-internal]
         ]}
         {:des "Change hold spacebar to hyper (command + control + option)"
          :rules [
@@ -47,25 +40,6 @@
             [:slash :!Ff11]
             [:p :f17]
         ]}
-        {:des "Typora Vi mode"
-         :rules [:typora
-            [:escape ["viora" 1] ["viora" 0]]
-            [:escape :escape ["viora" 1]]
-            [:i ["viora" 0] :viora]
-            [:h :left_arrow ["viora" 1]]
-            [:j :down_arrow ["viora" 1]]
-            [:k :up_arrow ["viora" 1]]
-            [:l :right_arrow ["viora" 1]]
-            [:b :!Oleft_arrow ["viora" 1]]
-            [:e :!Oright_arrow ["viora" 1]]
-            [:0 :!Cleft_arrow ["viora" 1]]
-            [:!S4 :!Cright_arrow ["viora" 1]]
-            [:g ["viora_g" 1] [["viora" 1] ["viora_g" 0]]]
-            [:g [:!Cup_arrow ["viora_g" 0]] ["viora_g" 1]]
-            [:z ["viora_z" 1] [["viora" 1] ["viora_z" 0]]]
-            [:z [:!Tl ["viora_z" 0]] ["viora_z" 1]]
-            [:!Sg :!Cdown_arrow ["viora" 1]]
-         ]}
         {:des "Double tap escape to switch english input source"
          :rules [
             [:##escape :us ["escape pressed" 1]]
