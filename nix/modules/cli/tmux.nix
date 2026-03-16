@@ -21,8 +21,9 @@
     ];
 
     extraConfig = ''
-      bind - split-window -v -c "#{pane_current_path}"
-      bind | split-window -h -c "#{pane_current_path}"
+      bind - split-window -v -c "#{pane_current_path}"  # 垂直分割窗口
+      bind | split-window -h -c "#{pane_current_path}"  # 水平分割窗口
+
   '';
   };
 }
