@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./nix/modules/base.nix
+  ];
+
   # 配置用户名和主目录路径
   home.username = "double_u";
   home.homeDirectory = "/home/double_u";
@@ -17,13 +21,4 @@
 
   programs.bash.enable = true;         # 接管 bash
   programs.home-manager.enable = true; # 让 Home Manager 管理自身
-
-  # 托管配置的应用
-  programs = {
-    git = {
-      enable = true;
-      settings.user.name = "immwind";
-      settings.user.email = "i@immwind.com";
-    };
-  };
 }
