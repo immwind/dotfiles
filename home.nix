@@ -19,6 +19,5 @@
     hms = "home-manager switch --flake ~/dotfiles#double_u@ubuntu";
   };
 
-  programs.bash.enable = true;         # 接管 bash
   programs.home-manager.enable = true; # 让 Home Manager 管理自身
 }
