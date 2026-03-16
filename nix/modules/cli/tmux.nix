@@ -24,6 +24,7 @@
       bind - split-window -v -c "#{pane_current_path}"  # 垂直分割窗口
       bind | split-window -h -c "#{pane_current_path}"  # 水平分割窗口
 
+      bind f display-popup -E -w 70% -h 50% "fzf"       # 使用 fzf 搜索文件
   '';
   };
 }
