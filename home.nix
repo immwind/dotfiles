@@ -17,7 +17,6 @@
 
   programs.bash.enable = true;         # 接管 bash
   programs.home-manager.enable = true; # 让 Home Manager 管理自身
-  targets.genericLinux.enable = true;  # 非 NixOS 发行版的 Linux 需要配置
 
   # 托管配置的应用
   programs = {

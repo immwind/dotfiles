@@ -16,8 +16,8 @@
     homeConfigurations = {
       # 用户@主机名的对应的配置
       "double_u@ubuntu" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;     # 指定软件包集
-        modules = [ ./home.nix ];                       # 加载配置模块
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;           # 指定软件包集
+        modules = [ ./home.nix ./nix/hosts/linux-server.nix]; # 加载配置模块
       };
     };
   };
