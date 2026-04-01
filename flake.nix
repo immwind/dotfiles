@@ -11,12 +11,17 @@
   };
 
   # flake 输出定义
-  outputs = { nixpkgs, home-manager, ... }: {
+  outputs = { nixpkgs, home-manager, ... }:
+  let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};                  # 指定软件包集
+  in
+  {
     # Home Manager 配置集合
     homeConfigurations = {
       # 用户@主机名的对应的配置
       "double_u@ubuntu" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;           # 指定软件包集
+        pkgs = pkgs;
         modules = [ ./home.nix ./nix/hosts/linux-server.nix]; # 加载配置模块
       };
     };
