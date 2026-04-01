@@ -1,12 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   programs.bash = {
     enable = true;
     initExtra = ''
-      if [[ "$(ps -o comm= -p $PPID 2>/dev/null)" != "fish" ]]; then
-        exec fish
-      fi
+      [[ $- == *i* && -z "$IN_FISH" ]] && export IN_FISH=1 && exec ${pkgs.fish}/bin/fish
     '';
   };
 }
