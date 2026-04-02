@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of double_u";
+  description = "dotfiles: Nix configuration for Linux";
 
   # 声明外部依赖
   inputs = {
@@ -14,14 +14,22 @@
   outputs = { nixpkgs, home-manager, ... }:
   let
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};                  # 指定软件包集
+    pkgs = nixpkgs.legacyPackages.${system};             # 指定软件包集
+    localConfig =
+      if builtins.pathExists ./config.local.nix then
+        import ./config.local.nix
+      else
+        import ./config.example.nix;
   in
   {
     # Home Manager 配置集合
     homeConfigurations = {
-      # 用户@主机名的对应的配置
-      "double_u@ubuntu" = home-manager.lib.homeManagerConfiguration {
+      # 主机名的对应的配置
+      "linux-server" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgs;
+        extraSpecialArgs = {
+          inherit localConfig;
+        };
         modules = [ ./home.nix ./nix/hosts/linux-server.nix]; # 加载配置模块
       };
     };
