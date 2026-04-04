@@ -24,7 +24,7 @@
     homeConfigurations = {
       # 对应的主机名配置
       "linux-server" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        pkgs = nixpkgs.legacyPackages.${localConfig.hostPlatform};
         # 传递配置文件
         extraSpecialArgs = {
           inherit localConfig;
