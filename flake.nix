@@ -1,5 +1,12 @@
 {
-  description = "dotfiles: Nix configuration for Linux";
+
+  nixConfig = {
+    substituters = [
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      "https://cache.nixos.org"
+    ];
+  };
 
   # 声明外部依赖
   inputs = {
