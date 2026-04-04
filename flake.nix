@@ -13,8 +13,6 @@
   # flake 输出定义
   outputs = { nixpkgs, home-manager, ... }:
   let
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};             # 指定软件包集
     localConfig =
       if builtins.pathExists ./config.local.nix then
         import ./config.local.nix
@@ -24,13 +22,18 @@
   {
     # Home Manager 配置集合
     homeConfigurations = {
-      # 主机名的对应的配置
+      # 对应的主机名配置
       "linux-server" = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        # 传递配置文件
         extraSpecialArgs = {
           inherit localConfig;
         };
-        modules = [ ./home.nix ./nix/hosts/linux-server.nix]; # 加载配置模块
+        # 加载配置模块
+        modules = [
+          ./home.nix
+          ./nix/hosts/linux-server.nix
+        ];
       };
     };
   };
