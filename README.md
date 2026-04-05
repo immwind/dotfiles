@@ -24,3 +24,9 @@ My dotfiles, powered by Nix.
 PS：在本地修改示例后会导致注释无法对齐，因此把 `config.example.nix` 中的注释移除了，统一放到
 README.md 中。
 
+## dot 命令
+
+- `dot proxy`：为 Shell 设置 HTTP(S) 代理
+- `dot unproxy`：清除 Shell HTTP(S) 代理
+- `dot sync`：应用 flake，根据系统自动判断是 home-manager 还是 darwin-rebuild
+
