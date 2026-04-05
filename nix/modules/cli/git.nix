@@ -3,7 +3,9 @@
 {
   programs.git = {
     enable = true;
-    settings.user.name = localConfig.git.userName;
-    settings.user.email = localConfig.git.userEmail;
+    extraConfig = {
+      user.name = localConfig.git.userName;
+      user.email = localConfig.git.userEmail;
+    };
   };
 }
