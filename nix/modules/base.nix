@@ -10,6 +10,5 @@
     ./cli/starship.nix
     ./cli/tmux.nix
     ./cli/uv.nix
-    ./common/shell.nix
   ];
 }
