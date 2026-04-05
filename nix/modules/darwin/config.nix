@@ -1,6 +1,10 @@
 { localConfig, ... }:
 
 {
+  imports = [
+    ../shell/zsh.nix
+  ];
+
   system.stateVersion = 5;
   nixpkgs.config.allowUnfree = true;                     # 允许安装非免费软件
 
