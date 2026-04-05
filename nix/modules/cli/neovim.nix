@@ -11,7 +11,7 @@
       molokai
     ];
 
-    initLua = ''
+    extraLuaConfig = ''
       vim.opt.number = true            -- 显示行号
       vim.opt.relativenumber = true    -- 相对行号
       vim.opt.cursorline = true        -- 高亮当前行
