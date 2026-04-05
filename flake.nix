@@ -1,6 +1,9 @@
 {
+  description = "dotfiles: Nix configuration for Linux and macOS";
 
   nixConfig = {
+    extra-experimental-features = [ "nix-command" "flakes" ];
+
     substituters = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://mirrors.ustc.edu.cn/nix-channels/store"
@@ -10,15 +13,36 @@
 
   # 声明外部依赖
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # 官方源 unstable 分支
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
     home-manager = {
-      url = "github:nix-community/home-manager";         # home-manager 源
-      inputs.nixpkgs.follows = "nixpkgs";                # 和 nixpkgs 版本一致
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # 为兼容 macOS Monterey 的配置
+    nixpkgs-2411.url = "github:nixos/nixpkgs/nixos-24.11"; # Monterey
+
+    nix-darwin-monterey = {
+      url = "github:nix-darwin/nix-darwin/nix-darwin-24.11";
+      inputs.nixpkgs.follows = "nixpkgs-2411";
+    };
+
+    home-manager-monterey = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs-2411";
     };
   };
 
-  # flake 输出定义
-  outputs = { nixpkgs, home-manager, ... }:
+  outputs = inputs@{
+    nixpkgs,
+    home-manager,
+    nixpkgs-2411,
+    nix-darwin-monterey,
+    home-manager-monterey,
+    ...
+  }:
+
   let
     localConfig =
       if builtins.pathExists ./config.local.nix then
@@ -27,19 +51,26 @@
         import ./config.example.nix;
   in
   {
-    # Home Manager 配置集合
+    # Home Manager
     homeConfigurations = {
-      # 对应的主机名配置
       "linux-server" = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.${localConfig.hostPlatform};
-        # 传递配置文件
-        extraSpecialArgs = {
-          inherit localConfig;
-        };
-        # 加载配置模块
+        extraSpecialArgs = { inherit localConfig; };
         modules = [
           ./home.nix
           ./nix/hosts/linux-server.nix
+        ];
+      };
+    };
+
+    # macOS Monterey（Intel）
+    darwinConfigurations = {
+      "darwin-intel" = nix-darwin-monterey.lib.darwinSystem {
+        system = localConfig.hostPlatform;
+        specialArgs = { inherit localConfig; };
+        modules = [
+          ./nix/hosts/darwin-intel.nix
+          home-manager-monterey.darwinModules.home-manager
         ];
       };
     };
