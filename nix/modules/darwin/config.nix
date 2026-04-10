@@ -1,7 +1,8 @@
-{ localConfig, ... }:
+{ localConfig, dotfiles, ... }:
 
 {
   imports = [
+    ../cli/homebrew.nix
     ../shell/zsh.nix
   ];
 
@@ -20,10 +21,10 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     backupFileExtension = "backup";
-    extraSpecialArgs = { inherit localConfig; };
+    extraSpecialArgs = { inherit localConfig dotfiles; };
     users.${localConfig.username} = {
       imports = [
-        ../../../home.nix
+        (dotfiles + "/home.nix")
       ];
     };
   };

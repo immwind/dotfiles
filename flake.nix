@@ -67,7 +67,10 @@
     darwinConfigurations = {
       "darwin-intel" = nix-darwin-monterey.lib.darwinSystem {
         system = localConfig.hostPlatform;
-        specialArgs = { inherit localConfig; };
+        specialArgs = {
+          inherit localConfig;
+          dotfiles = ./.;
+        };
         modules = [
           ./nix/hosts/darwin-intel.nix
           home-manager-monterey.darwinModules.home-manager
