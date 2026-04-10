@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../cli/homebrew.nix
     ../shell/zsh.nix
+    ../cli/homebrew.nix
   ];
 
   system.stateVersion = 5;
