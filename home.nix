@@ -1,10 +1,6 @@
 { config, pkgs, localConfig, ... }:
 
 {
-  imports = [
-    ./nix/modules/base.nix
-  ];
-
   home.username = localConfig.username;           # 用户名
   home.homeDirectory = localConfig.homeDirectory; # HOME 目录路径
 

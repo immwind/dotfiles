@@ -1,11 +1,6 @@
 { localConfig, dotfiles, ... }:
 
 {
-  imports = [
-    ../shell/zsh.nix
-    ../cli/homebrew.nix
-  ];
-
   system.stateVersion = 5;
   nixpkgs.config.allowUnfree = true;                     # 允许安装非免费软件
 
@@ -25,6 +20,8 @@
     users.${localConfig.username} = {
       imports = [
         (dotfiles + "/home.nix")
+        ../home-common.nix
+        ../shell/zsh.nix
       ];
     };
   };
